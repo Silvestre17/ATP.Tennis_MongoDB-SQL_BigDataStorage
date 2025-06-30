@@ -23,7 +23,7 @@ The primary objective is to build a robust data management solution by:
 
 ## 🎓 Project Context
 
-This project was developed for the **Armazenamento para Big Data** (*Storage for Big Data*) course, as part of the **[Licenciatura em Ciência de Dados](https://www.iscte-iul.pt/degree/code/0322/bachelor-degree-in-data-science)** (*Bachelor Degree in Data Science*) at **ISCTE-IUL**. The work was completed during the 2022/2023 academic year.
+This project was developed for the **Armazenamento para Big Data** (*Storage for Big Data*) course, as part of the **[Licenciatura em Ciência de Dados](https://www.iscte-iul.pt/degree/code/0322/bachelor-degree-in-data-science)** (*Bachelor Degree in Data Science*) at **ISCTE-IUL**. The work was completed during the 2022/2023 academic year in 1st Semester in 2nd year.
 
 ## 🛠️ Technologies Used
 
@@ -44,7 +44,7 @@ The project was implemented using a standard stack for relational and NoSQL data
 ## 📝 Data Source
 
 *   **Dataset:** `ATP Players` - A complete database of the TOP500 ATP men's professional tennis players, data taken from the [official ATP website](https://www.atptour.com/en/stats/individual-game-stats?factType=Aces&year=career&surface=all&country=all&sortBy=percentage&sortDirection=desc) via webscrapping in 2022.
-*   **Origin:** The initial data was provided in `.json` format, which was then processed and structured for both database systems.
+*   **Origin:** The initial data was provided in `.json` format, which was then processed and structured for data analysis.
 
 ## ⚙️ Project Workflow & Key Steps
 
@@ -68,7 +68,7 @@ The project was implemented using a standard stack for relational and NoSQL data
 The final relational model was designed to ensure data integrity and minimize redundancy.
 
 <p align="center">
-    <img src="./Img/Esboço da BD Relacional_Com Oponente Nome.png" alt="Relational Database Schema" />
+    <img src="./img/Esboço da BD Relacional_Com Oponente Nome.png" alt="Relational Database Schema"/>
 </p>
 
 ---
@@ -85,14 +85,15 @@ To replicate this project, you will need **MongoDB** and **MySQL** (preferably m
     ```bash
     mongoimport --db atp --collection players --drop --file atpplayers.json
     ```
+    *(Note: The `--drop` option will remove the existing collection before importing new data to avoid duplicates. Make sure to adjust the file path as necessary.)*
 
 #### 2. Data Export to CSV
 
 1.  Use `mongoexport` to create a CSV file that can be imported into MySQL.
     ```bash
-    mongoexport --db atp --collection players --type=csv --fields PlayerName,Born,Height... --out atp.csv
+    mongoexport --db atp --collection players --type=csv --fields PlayerName,Born,Height,Hand,LinkPlayer,Tournament,Location,Date,Ground,Prize,GameRound,GameRank,Oponent,WL,Score --out atp.csv
     ```
-    *(Note: You need to specify all fields you want to export)*
+    *(Note: You need to adjust the file path and fields according to your MongoDB collection structure.)*
 
 #### 3. Setup and Data Loading in MySQL
 
