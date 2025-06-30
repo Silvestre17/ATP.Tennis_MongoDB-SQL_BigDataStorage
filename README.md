@@ -4,76 +4,110 @@
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/ATP_Tour_logo.svg/1200px-ATP_Tour_logo.svg.png" alt="Database Administration Project Banner" width="200">
 </p>
 
+<p align="center">
+    <!-- Project Links -->
+    <a href="https://github.com/Silvestre17/ATP.Tennis_MongoDB-SQL_BigDataStorage"><img src="https://img.shields.io/badge/Project_Repo-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo"></a>
+</p>
+
 ## 📝 Description
 
 This project focuses on building, managing, and optimizing a database system using both relational (**SQL**) and non-relational (**NoSQL**) database models. The project aims to demonstrate proficiency in database design, implementation, data migration, and performance tuning within different database paradigms.
 
 ## ✨ Objective
 
-The primary objective of this project is to:
+The primary objective is to build a robust data management solution by:
+*   Designing and implementing a normalized relational database schema.
+*   Efficiently migrating data from MySQL to a MongoDB collection.
+*   Implementing performance optimizations, including proper indexing.
+*   Demonstrating a practical understanding of when and how to use different database models.
 
-*   Design and implement a relational database schema for a given data set.
-*   Migrate data from a relational database to a NoSQL database (MongoDB).
-*   Optimize database performance, including indexing and query optimization.
-*   Demonstrate a practical understanding of different database models and their applications.
+## 🎓 Project Context
+
+This project was developed for the **Armazenamento para Big Data** (*Storage for Big Data*) course, as part of the **[Licenciatura em Ciência de Dados](https://www.iscte-iul.pt/degree/code/0322/bachelor-degree-in-data-science)** (*Bachelor Degree in Data Science*) at **ISCTE-IUL**. The work was completed during the 2022/2023 academic year.
+
+## 🛠️ Technologies Used
+
+The project was implemented using a standard stack for relational and NoSQL database management.
 
 <p align="center">
-    <a href="https://www.mysql.com/">
-        <img src="https://img.shields.io/badge/MySQL-00008F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
-    </a>
     <a href="https://www.mongodb.com/">
         <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
     </a>
-</p>
-
-## 📝 Data Set
-*   **`ATP Players`:** Base de Dados de Tenistas Profissionais
-    -  *This databse is used for schema implementation and data migration.*
-
-## 🏗️ Project Structure (Focus: Practical Application)
-
-This project emphasizes the practical application of database administration skills. Here's a summary of the main steps:
-
-1.  **Data Analysis & Understanding:** 🔍
-    *   Analyzed the provided `ATP Players` dataset to identify entities, attributes, and relationships.
-    *   Determined data types and potential data quality issues.
-
-2.  **Relational Database Design:** 📐
-    *   Created a relational database schema in MySQL based on the data analysis.
-    *   Defined tables, columns, primary keys, and foreign keys.
-    *   Ensured data integrity through constraints and relationships.
-
-3.  **Data Migration:** 🔄
-    *   Created a procedure for the data migration from SQL to MongoDB
-
-<p align="center">
-        <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
-    <a href="https://www.w3schools.com/sql/mysql/default.asp">
-        <img src="https://img.shields.io/badge/SQL-E14270?style=for-the-badge&logo=sql&logoColor=white" alt="SQL" />
-    </a>
-</p>
-
-4.  **Implementation:** 💻
-    *   Implemented the relational database in MySQL using SQL commands.
-    *   Imported data into the MySQL tables.
-    *   Implemented the Non-Relational database in MongoDB.
-
-<p align="center">
     <a href="https://www.mysql.com/">
-        <img src="https://img.shields.io/badge/MySQL-00008F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+        <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+    </a>
+    <a href="https://www.phpmyadmin.net/">
+        <img src="https://img.shields.io/badge/phpMyAdmin-F27319?style=for-the-badge&logo=phpmyadmin&logoColor=white" alt="phpMyAdmin" />
     </a>
 </p>
-    
-*   **Optimization (Indexing):** ⚡
-        *   Improve data retrievement.
+
+## 📝 Data Source
+
+*   **Dataset:** `ATP Players` - A complete database of the TOP500 ATP men's professional tennis players, data taken from the [official ATP website](https://www.atptour.com/en/stats/individual-game-stats?factType=Aces&year=career&surface=all&country=all&sortBy=percentage&sortDirection=desc) via webscrapping in 2022.
+*   **Origin:** The initial data was provided in `.json` format, which was then processed and structured for both database systems.
+
+## ⚙️ Project Workflow & Key Steps
+
+1.  **Data Ingestion & Initial Analysis (NoSQL):** 🔍
+    *   The raw data was first imported from a `.json` file into a **MongoDB** collection using `mongoimport`. This allowed for flexible initial exploration of the semi-structured data.
+
+2.  **Relational Database Design (SQL):** 📐
+    *   Analyzed the entities (Players, Tournaments, Games) and their relationships.
+    *   Designed a normalized relational schema with three main tables: `Players`, `Tournaments`, and `Games`, linked by primary and foreign keys.
+
+3.  **Implementation & Data Loading (SQL):** 💻
+    *   Exported the data from MongoDB to a `.csv` file.
+    *   Created the tables in **MySQL** and imported the structured data from the CSV.
+    *   Cleaned and standardized the data within SQL, handling inconsistencies in player names, locations, and other attributes.
+
+4.  **Optimization:** ⚡
+    *   Applied indexes to key columns (like `Player_Name` and foreign keys) to significantly improve query performance for data retrieval and joins.
 
 ## 🔗 Relational Database Schema
+
+The final relational model was designed to ensure data integrity and minimize redundancy.
 
 <p align="center">
     <img src="./Img/Esboço da BD Relacional_Com Oponente Nome.png" alt="Relational Database Schema" />
 </p>
 
 ---
+
+
+## 🚀 How to Run the Code
+
+To replicate this project, you will need **MongoDB** and **MySQL** (preferably managed via a tool like **phpMyAdmin** or MySQL Workbench).
+
+#### 1. Initial Data Load into MongoDB
+
+1.  Start your MongoDB server.
+2.  Use the `mongoimport` command line tool to load the initial JSON data.
+    ```bash
+    mongoimport --db atp --collection players --drop --file atpplayers.json
+    ```
+
+#### 2. Data Export to CSV
+
+1.  Use `mongoexport` to create a CSV file that can be imported into MySQL.
+    ```bash
+    mongoexport --db atp --collection players --type=csv --fields PlayerName,Born,Height... --out atp.csv
+    ```
+    *(Note: You need to specify all fields you want to export)*
+
+#### 3. Setup and Data Loading in MySQL
+
+1.  Create a new database (e.g., `atp_relational`) in your MySQL server.
+2.  Run the SQL script provided in this repository (`schema_and_load.sql`). This script will:
+    *   `CREATE` all the necessary tables (`Players`, `Tournaments`, `Games`).
+    *   `LOAD DATA INFILE` to import the data from `atp.csv`.
+    *   Run all the `UPDATE` and `ALTER TABLE` commands for data cleaning, normalization, and index creation.
+
+## 👥 Team Members (Group 8)
+
+*   **André Silvestre** (Nº104532)
+*   **Diogo Catarino** (Nº104745)
+*   **Francisco Gomes** (Nº104944)
+*   **Rita Matos** (Nº104936)
 
 
 ## 🇵🇹 Note
